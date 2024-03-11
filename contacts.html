@@ -43,7 +43,7 @@
     }
     
     .section__header {
-      font-size: 2rem;
+      font-size: 3rem;
       font-weight: 800;
       font-family: var(--header-font);
       color: var(--text-dark);
@@ -796,6 +796,7 @@
       }
     }
     
+    
     @media (width > 1024px) {
       .about__grid {
         gap: 2rem;
@@ -813,7 +814,17 @@
       .news__grid {
         gap: 2rem;
       }
-    }
+      .background{
+        
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        color: aliceblue;
+        height: 100vh;
+      }
+ 
+}
+    
     </style>
   <body>
     <nav>
@@ -828,80 +839,49 @@
           </div>
         </div>
         <ul class="nav__links" id="nav-links">
-          <li><a href="{% url 'index' %}">Меню</a></li>
-          <li><a href="{% url 'register' %}">Регистрация</a></li>
-          <li><a href="{% url 'login' %}">Войти</a></li>
+          <li><a href="{% url 'about' %}">Меню</a></li>
+          <li><a href="{% url 'hospital_form' %}">Отели</a></li>
+          <li><a href="{% url 'book' %}">Бронь</a></li>
+          <li><a href="{% url 'contacts' %}">Контакты</a></li>
+          {% if request.user.is_authenticated %}
+            <li><a href="{% url 'about' %}"> {{ user.username }}</a></li>
+            <li><a href="{% url 'index' %}">Выйти</a></li>
+        {% else %}
+            <li><a href="{% url 'register' %}">Зарегестрироваться</a></li>
+            <li><a href="{% url 'index' %}">Выйти</a></li>
+        {% endif %}
         </ul>
       </div>
     </nav>
 
     <header class="header" id="home">
       <div class="section__container header__container">
-       
-        <p class="section__subheader">Вам понравится наш портал, если Вы цените свое время, средства и возможность выбора.<br> 
-            Вы с легкостью можете найти лучший для Вас номер в системе онлайн бронирования <br>
-            отелей и забронировать гостиницу мгновенно.</p>
-            <h1>LOTUS</h1>
-            <a href="{% url 'login' %}">
-        <button class="btn">Забронировать номер</button>
-            </a>
+        
+
+        <span style="font-size: medium;"> <SPAN style="color: #ffffff;"><h2>
+        <a href="https://t.me/kairtovvna"><SPAN style="color: #ffffff;">+7 708 553 7345</SPAN><BR></a>
+            <SPAN style="color: #ffffff;">Lotus@gmail.com</SPAN></SPAN>
+                            
+            <a href="https://2gis.kz/astana/firm/70000001036709805?m=71.417882%2C51.090733%2F16"><BR><SPAN style="color: #ffffff;">Мангилик Ел С1</SPAN></a>  
+       </h2></SPAN></span>
+        
+        <span style="font-size: medium;"></span>
       </div>
     </header>
 
     <section class="booking">
       <div class="section__container booking__container">
         <form action="/">
-          <div class="input__group">
-            <label for="arrival">ФИО</label>
-            <input type="text" placeholder="Введите ваше ФИО" />
-          </div>
-          <div class="input__group">
-            <label for="departure">Дата заселения</label>
-            <input type="date" placeholder="Check-in-Date">
-          </div>
-          <div class="input__group">
-            <label for="departure">Дата выселения</label>
-            <input type="date" placeholder="Check-in-Date">
-          </div>
-          <div class="input__group">
-            <label for="guests">Гости</label>
-            <input type="number" placeholder="Количесво гостей" />
+         <h1><span style="color:#ffffff;"> НАШ ОФИС</span> </h1>
           </div>
         </form>
-        <a href="{% url 'login' %}">
-        <button class="btn">Забронировать номер</button>
-    </a>
+        
+        
       </div>
     </section>
+    <a href="https://2gis.kz/astana/firm/70000001036709805?m=71.417882%2C51.090733%2F16"><img src="/static/assets/zdan.jpg" class="background" /></a>
 
-    <section class="about" id="about">
-      <div class="section__container about__container">
-        <div class="about__grid">
-          <div class="about__image">
-            <img src="/static/assets/mod1.jpg" alt="about" />
-          </div>
-          <div class="about__card">
-            <span><i class="ri-user-line"></i></span>
-            <h4>Дешевле официальных тарифов</h4>
-            <p>
-              Бронируйте номера со скидками — цены на сайте практически всегда выгодны.
-            </p>
-          </div>
-          <div class="about__image">
-            <img src="/static/assets/mod2.jpg" alt="about" />
-          </div>
-          <div class="about__card">
-            <span><i class="ri-calendar-check-line"></i></span>
-            <h4>Оплата без комиссии</h4>
-            <p>Вы не платите никаким посредникам — оплату за номер получает выбранный вами отель.</p>
-          </div>
-        </div>
-        <div class="about__content">
-          <p class="section__subheader">О нас</p>
-          <h2 class="section__header"> Мы - это удобный и надежный сервис для поиска и бронирования отелей.</h2>
-          <p class="section__description">
-           Мы поможем вам найти идеальный вариант проживания для любого путешествия, будь то деловая поездка, семейный отдых. Вот почему вы должны выбрать нас.Гарантируем качество и безопасность бронирования. Все отели, представленные на нашем сайте, проверены нашими экспертами и имеют реальные отзывы от гостей. Мы также защищаем ваши личные данные и платежную информацию с помощью современных технологий шифрования.
-          </p>
+   
         </div>
       </div>
     </section>

@@ -1,0 +1,262 @@
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/png">
+</head>
+<body>
+<div class="header">
+  <h1>
+    <img src="/static/assets/log1.webp" alt="KazPharm logo" height="100px" width="100px">
+  </h1>
+  <div class="header-text">
+    <li><a href="{% url 'about' %}">Назад</a></li>
+    <li><a href="{% url 'hospital_form' %}">Отели</a></li>
+    <li><a href="{% url 'book' %}">Бронь</a></li>
+    <li><a href="{% url 'contacts' %}">Контакты</a></li>
+    {% if request.user.is_authenticated %}
+            <li><a href="{% url 'about' %}"> {{ user.username }}</a></li>
+            
+        {% else %}
+            <li><a href="{% url 'register' %}">Зарегестрироваться</a></li>
+           
+        {% endif %}
+    
+        
+
+  
+  </div>
+</div>
+<div class="footer">
+<p>&copy; Lotus 2023</p>
+</div>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li,
+a {
+    list-style: none;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.header {
+    /* width: 80%; */
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    background-color:#061727;
+    padding: 0 20px;
+    color: #ffffff;
+}
+
+.header-text {
+    display: flex;
+}
+
+.header-text :hover {
+    color: rgb(94, 163, 227);
+}
+
+.header-text li {
+    margin-left: 20px;
+    font-size: 15px;
+    padding-right: 30px;
+}
+
+body {
+  background-image: url("/static/assets/header.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: aliceblue;
+  height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+  background-attachment: fixed;
+}
+
+.footer {
+    background-color:#061727;
+    color: aliceblue;
+    padding: 15px;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+  }
+
+
+  .wrapper h1{
+    text-align: center;
+    color: #061727;
+    margin-top: -19px;
+    margin-bottom: 10px;
+}
+  .wrapper {
+    max-width: 350px;
+    color: #424a52;
+    min-height: 300px;
+    margin: 80px auto;
+    padding: 40px 35px 35px 35px;
+    background-color: rgba(218, 231, 241, 0.771);
+    border-radius: 15px;
+    box-shadow: 13px 13px 20px rgba(0, 8, 16, 0.87)13px -13px 20px rgba(116, 120, 130, 0.654);
+    float: right;
+    width: 90%;
+    margin-top: 20px;
+    margin-right: 500px;
+  } 
+  
+  
+  .agileits-top h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .agileits-top form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .agileits-top input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+  
+  .agileits-top input.email {
+    background-color: #f5f5f5; /* Светло-серый фон для поля email */
+  }
+  
+  .agileits-top input.w3lpass {
+    /* Пароль - отдельный стиль */
+    border-color: #ddd;
+  }
+  
+  .wthree-text label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  
+  .wthree-text label.anim input {
+    /* Стиль галочки */
+    border-radius: 3px;
+    accent-color: #d06b22;
+  }
+  
+  .wthree-text label.anim input:checked ~ span {
+    font-weight: bold;
+    color: #061727; /* Зеленый цвет текста при выборе галочки */
+  }
+  
+  .agileits-top input[type="submit"] {
+    background-color: #061727;/* Зеленый цвет кнопки */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .agileits-top input[type="submit"]:hover {
+    background-color: #091b2b; /* Темнее при наведении */
+  }
+  
+  .agileits-top p {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  
+  .agileits-top p a {
+    color: #061727; /* Зеленый цвет ссылки */
+  }
+  
+  .form.errors {
+    border: 1px solid red; /* Красная рамка при ошибке */
+  }
+  .btn {
+                display: inline-block;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #fff;
+                text-align: center;
+                text-decoration: none;
+                vertical-align: middle;
+                cursor: pointer;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+                background-color: #061727;
+                border: 1px solid #061727;
+                padding: .375rem .75rem;
+                font-size: 1rem;
+                border-radius: .25rem;
+                transition: background-color .15s ease-in-out;
+            }
+
+            .btn:hover {
+                color: #fff;
+                background-color: #020e1b;
+                border-color: #020e1b;
+            }
+</style>
+
+</style>
+<body>
+	<div class="main-w3layouts wrapper">
+		<h1>Забронировать</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form method="post">
+                    {% csrf_token %}
+					<input class="text" type="text" name="username" placeholder="Фамилия" required="">
+          <input class="text" type="text" name="username" placeholder="Имя" required="">
+          <input class="text" type="text" name="username" placeholder="Отчество" required="">
+          <input type="date" placeholder="Check-in-Date" placeholder="Дата заселения" required="" >
+          <input type="date" placeholder="Check-in-Date" placeholder="Дата выселения" required="" >
+          <input type="number" placeholder="Количесво гостей" placeholder="Количество Гостей" required=""/>
+					<div class="wthree-text">
+						
+						<div class="clear"> </div>
+					</div>
+                    
+                    
+          <button class="btn"><a href="{% url 'card' %}">Далее</a></button>
+
+				</form>
+				
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
